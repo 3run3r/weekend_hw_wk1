@@ -63,9 +63,17 @@ def stock_count(pet_stock)
 end
 
 def customer_cash(customer_file)
-  for customer in customer_file
-    if customer_file == customer
-     return customer[:cash]
-   end
- end
+  return customer_file[:cash]
+end
+
+def remove_customer_cash(person, cash_amount)
+  person[:cash] -= cash_amount
+end
+
+def customer_pet_count(person)
+  return person[:pets].count
+end
+
+def add_pet_to_customer(person, new_pets_added)
+  person[:pets].push(new_pets_added)
 end
