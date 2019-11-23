@@ -15,7 +15,7 @@ def pets_sold(pet_stock)
 end
 
 def increase_pets_sold(pet_stock, amount)
-  return pet_stock[:admin][:pets_sold] += amount
+  pet_stock[:admin][:pets_sold] += amount
 end
 
 def stock_count(pet_stock)
@@ -34,11 +34,9 @@ end
 
 
 def find_pet_by_name(pet_stock, name)
-  names_found = Hash.new
-  for pet in pet_stock[:pets]
-    if pet[:name] == name
-      names_found[:name] = name
-      return names_found
+  for whole_pet in pet_stock[:pets]
+    if whole_pet[:name] == name
+      return whole_pet
     end
   end
   return nil
@@ -85,4 +83,12 @@ def customer_can_afford_pet(person, new_pets_added)
     return false
     #ask question: outside of if statement, is it cheating?
   end
+end
+
+
+def sell_pet_to_customer(pet_stock, pet, person)
+  person[:cash] -= pet[:price]
+  add_pet_to_customer(person, pet)
+  increase_pets_sold(pet_stock, 1)
+  pet_stock[:admin][:total_cash] += pet[:price]
 end
