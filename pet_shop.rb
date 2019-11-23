@@ -77,3 +77,12 @@ end
 def add_pet_to_customer(person, new_pets_added)
   person[:pets].push(new_pets_added)
 end
+
+def customer_can_afford_pet(person, new_pets_added)
+  if person[:cash] >= new_pets_added[:price]
+    return true
+  else
+    return false
+    #ask question: outside of if statement, is it cheating?
+  end
+end
