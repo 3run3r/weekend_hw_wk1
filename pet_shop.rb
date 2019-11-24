@@ -87,8 +87,10 @@ end
 
 
 def sell_pet_to_customer(pet_stock, pet, person)
-  person[:cash] -= pet[:price]
-  add_pet_to_customer(person, pet)
-  increase_pets_sold(pet_stock, 1)
-  pet_stock[:admin][:total_cash] += pet[:price]
+  if pet.class == Hash && person[:cash] >= pet[:price] # unless pet == nil
+    person[:cash] -= pet[:price]
+    add_pet_to_customer(person, pet)
+    increase_pets_sold(pet_stock, 1)
+    pet_stock[:admin][:total_cash] += pet[:price]
+  end
 end
