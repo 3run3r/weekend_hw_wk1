@@ -81,7 +81,6 @@ def customer_can_afford_pet(person, new_pets_added)
     return true
   else
     return false
-    #ask question: outside of if statement, is it cheating?
   end
 end
 
